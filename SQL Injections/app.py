@@ -57,7 +57,10 @@ def login():
         
         # --- THIS IS WHERE THE SQL QUERY RUNS ---
         query = "SELECT * FROM users WHERE username = %s AND password = %s"
+        print("Generated SQL:", query)
+
         cursor.execute(query, (username, password))
+        print("Executed Query:", cursor.statement)
         user = cursor.fetchone()  # Fetches matching user if credentials are valid
         
         cursor.close()
